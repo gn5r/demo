@@ -74,4 +74,31 @@ public class SampleController extends AbstractRestController {
 
         return new ResponseEntity<List<TopicPathDto>>(list, HttpStatus.OK);
     }
+
+    @ApiOperation(value = "", notes = "")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "正常に取得できました", response = TopicPathDto.class, responseContainer = "List"),
+            @ApiResponse(code = 404, message = "データが見つかりませんでした", response = ErrorResource.class, responseContainer = "Map"),
+            @ApiResponse(code = 500, message = "サーバー内エラーが発生しました", response = ErrorResource.class, responseContainer = "Map") })
+    @PostMapping(value = "get/topicPath/all")
+    public ResponseEntity<?> getTopicPathByForm(
+            @ApiParam(name = "form", value = "パンくずリスト検索リソース", required = true) @RequestBody(required = true) final TopicPathSerchResource form) {
+        List<TopicPathDto> list = new ArrayList<>();
+
+        if (Objects.isNull(form)) {
+            throw new RestRuntimeException(HttpStatus.BAD_REQUEST, "検索フォームがnullです");
+        }
+
+        if (StringUtil.isEmpty(form.getParentId()) && StringUtil.isEmpty(form.getChildId())) {
+            throw new RestRuntimeException(HttpStatus.BAD_REQUEST, "検索フォームがnullです");
+        }
+
+        if (StringUtil.isNotEmpty(form.getParentId())) {
+            list = childService.getAllChildList(Integer.parseInt(form.getParentId()));
+        } else if (StringUtil.isNotEmpty(form.getChildId())) {
+            list = childService.getAllChildListByChildId(Integer.parseInt(form.getChildId()));
+        }
+
+        return new ResponseEntity<List<TopicPathDto>>(list, HttpStatus.OK);
+    }
 }
