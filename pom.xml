@@ -37,6 +37,12 @@
 			<!-- <scope>system</scope>
 			<systemPath>${basedir}/lib/common-utils-0.3.2.jar</systemPath> -->
 		</dependency>
+		<!-- h2db-->
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
 		<!-- doma -->
 		<dependency>
 			<groupId>org.seasar.doma.boot</groupId>

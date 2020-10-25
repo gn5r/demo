@@ -1,0 +1,18 @@
+CREATE TABLE IF NOT EXISTS `親` (
+  `親ID` int NOT NULL COMMENT '親ID',
+  `名前` varchar(64) DEFAULT NULL COMMENT '名前',
+  `登録日` datetime DEFAULT NULL COMMENT '登録日',
+  `更新日` datetime DEFAULT NULL COMMENT '更新日',
+  PRIMARY KEY (`親ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='親';
+
+CREATE TABLE IF NOT EXISTS `子` (
+  `親ID` int NOT NULL COMMENT '親ID',
+  `子ID` int NOT NULL COMMENT '子ID',
+  `上位子ID` int DEFAULT NULL COMMENT '上位子ID',
+  `名前` varchar(64) DEFAULT NULL COMMENT '名前',
+  `登録日` datetime DEFAULT NULL COMMENT '登録日',
+  `更新日` datetime DEFAULT NULL COMMENT '更新日',
+  PRIMARY KEY (`子ID`),
+  CONSTRAINT `子_ibfk_1` FOREIGN KEY (`親ID`) REFERENCES `親` (`親ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='子';

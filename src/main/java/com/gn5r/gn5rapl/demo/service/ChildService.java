@@ -33,21 +33,25 @@ public class ChildService {
         List<TopicPathDto> list = this.getAllChildList(parentId);
         List<TopicPathDto> removeList = new ArrayList<>();
 
-        for (TopicPathDto e : list) {
-            if (!CollectionUtils.isEmpty(e.getChildList())) {
-                List<TopicPathDto> tmpList = list.stream()
-                        .filter(child -> Objects.equals(e.getChildId(), child.getUpperChildId()))
-                        .collect(Collectors.toList());
-                removeList.addAll(tmpList);
+        if (!CollectionUtils.isEmpty(list)) {
+            for (TopicPathDto e : list) {
+                if (!CollectionUtils.isEmpty(e.getChildList())) {
+                    List<TopicPathDto> tmpList = list.stream()
+                            .filter(child -> Objects.equals(e.getChildId(), child.getUpperChildId()))
+                            .collect(Collectors.toList());
+                    removeList.addAll(tmpList);
+                }
             }
+
+            removeList.sort(Comparator.comparing(TopicPathDto::getChildId));
+
+            for (TopicPathDto e : removeList) {
+                list.remove(e);
+            }
+
+            // 第3世代以降は非表示
+            list.stream().forEach(child -> child.getChildList().stream().forEach(e -> e.getChildList().clear()));
         }
-
-        removeList.sort(Comparator.comparing(TopicPathDto::getChildId));
-
-        removeList.stream().forEach(e -> list.remove(e));
-
-        // 第3世代以降は非表示
-        list.stream().forEach(child -> child.getChildList().stream().forEach(e -> e.getChildList().clear()));
 
         return list;
     }
