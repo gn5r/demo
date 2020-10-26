@@ -1,0 +1,10 @@
+{
+  "java.maven.downloadSources": true,
+  "java.maven.updateSnapshots": true,
+  "java.configuration.updateBuildConfiguration": "automatic",
+  "maven.executable.options": "-s .\\.m2\\settings.xml",
+  "java.configuration.maven.userSettings": ".\\.m2\\settings.xml",
+  "maven.terminal.favorites": [
+    { "alias": "package", "command": "clean package" }
+  ]
+}

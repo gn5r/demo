@@ -1,0 +1,24 @@
+{
+    // IntelliSense を使用して利用可能な属性を学べます。
+    // 既存の属性の説明をホバーして表示します。
+    // 詳細情報は次を確認してください: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Debug(H2DB)",
+            "request": "launch",
+            "mainClass": "com.gn5r.gn5rapl.DemoApplication",
+            "projectName": "demo",
+            "vmArgs": "-Dspring.profiles.active=h2"
+        },
+        {
+            "type": "java",
+            "name": "Debug",
+            "request": "launch",
+            "mainClass": "com.gn5r.gn5rapl.DemoApplication",
+            "projectName": "demo",
+            "vmArgs": "-Dspring.profiles.active=development"
+        }
+    ]
+}

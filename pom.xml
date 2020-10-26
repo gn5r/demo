@@ -22,20 +22,25 @@
 	</properties>
 
 	<dependencies>
+		<!-- apache commons-lang3 -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
 		<!-- original library -->
 		<dependency>
 			<groupId>com.gn5r</groupId>
 			<artifactId>spring-boot-common</artifactId>
 			<version>0.2.6-RELEASE</version>
-			<!-- <scope>system</scope>
-			<systemPath>${basedir}/lib/spring-boot-common-0.2.6-RELEASE.jar</systemPath> -->
+			<scope>system</scope>
+			<systemPath>${basedir}/lib/spring-boot-common-0.2.6-RELEASE.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>com.gn5r</groupId>
 			<artifactId>common-utils</artifactId>
 			<version>0.3.3</version>
-			<!-- <scope>system</scope>
-			<systemPath>${basedir}/lib/common-utils-0.3.2.jar</systemPath> -->
+			<scope>system</scope>
+			<systemPath>${basedir}/lib/common-utils-0.3.3.jar</systemPath>
 		</dependency>
 		<!-- h2db-->
 		<dependency>

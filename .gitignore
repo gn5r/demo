@@ -30,7 +30,11 @@ build/
 !**/src/test/**/build/
 
 ### VS Code ###
-.vscode/
+# .vscode/
+sqltools.*
 
 ### H2DB ###
 /h2db/
+
+### local m2 ###
+/.m2/repository/
